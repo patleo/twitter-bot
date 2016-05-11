@@ -27,6 +27,7 @@ class DBWrapper:
     
     def query(self):
         cur = self.conn.cursor()
-        return cur.execute('SELECT * FROM Companies')
-    
+        cur.execute('SELECT * FROM Companies')
+        for row in cur:
+            print row
         
