@@ -10,6 +10,7 @@ if len(sys.argv) > 1:
     for arg in sys.argv[1:]:
         if arg == 'print-twitter':
             db.print_table('Twitter')
+            db.close_conn()
             sys.exit(0)
 
 company_table = db.return_table('Companies')
@@ -38,5 +39,4 @@ for comp in company_list:
     twitter_followers.append(comp.followers_count)
     
 db.add_twitter_row(twitter_handles, twitter_followers)
-"""
 db.close_conn()
