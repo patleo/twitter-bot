@@ -65,7 +65,7 @@ class DBWrapper:
         return table
     
     def print_table(self, table_name):
-        table = return_table(table_name)
+        table = self.return_table(table_name)
         for row in table:
             print row
             
