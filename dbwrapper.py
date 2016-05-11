@@ -1,6 +1,7 @@
 import os
 import psycopg2
 import urlparse
+import datetime
 
 class DBWrapper:
     def __init__(self):
@@ -14,7 +15,24 @@ class DBWrapper:
         host=url.hostname,
         port=url.port
         )
-        
+    
+    def add_twitter_row(self, twitter_handles, twitter_followers):
+        cur = self.conn.cursor()
+        comm = "INSERT INTO Twitter (DateCreated, "
+        for i in range(len(twitter_handles)):
+            if i < (len(twitter_handles) - 1):
+                comm += "{},".format(twitter_handles)
+            else:
+                comm += "{})".format(twitter_handles)
+        comm += "VALUES( {},".format(datetime.datetime.now())
+        for i in range(len(twitter_followers)):
+            if i < (len(twitter_handles) - 1):
+                comm += "{},".format(twitter_followers)
+            else:
+                comm += "{});".format(twitter_followers)
+        cur.execute(comm)
+        self.conn.commit()
+    
     def seed_companies_table(self, twitter_handle, stock_ticker, forbes_rank):
         cur = self.conn.cursor()
         cur.execute('CREATE TABLE Companies (id INTEGER PRIMARY KEY, Twitter varchar(255), Ticker varchar(255), Rank int);')
@@ -23,7 +41,6 @@ class DBWrapper:
             cur.execute(comm)
             
         self.conn.commit()
-        self.conn.close()
     
     def seed_twitter_table(self, twitter_handle):
         cur = self.conn.cursor()
@@ -32,7 +49,6 @@ class DBWrapper:
             comm = "ALTER TABLE Twitter ADD COLUMN {} BIGINT;".format(twitter_handle[i])
             cur.execute(comm)
         self.conn.commit()
-        self.conn.close()
             
     def return_table(self, table_name):
         table = []
@@ -42,3 +58,6 @@ class DBWrapper:
         for row in cur:
             table.append(row)
         return table
+    
+    def close_conn(self):
+        self.conn.close()

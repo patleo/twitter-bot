@@ -1,18 +1,34 @@
 from TwitterAPI import TwitterAPI
 import setup
-
-api = TwitterAPI(setup.consumer_key, setup.consumer_secret, setup.access_token_key, setup.access_token_secret)
-
-
-r = api.request('users/show', {'screen_name':'walmart'})
-
-for item in r:
-    print item['followers_count']
-
 from dbwrapper import DBWrapper
+from twitterclasses import Company
+
+
 db = DBWrapper()
-company_list = db.return_table('Companies')
+company_table = db.return_table('Companies')
+
+# Returns company info from Company table and adds necessary info to list of companies
+for comp in company_table:
+    c = Company(comp[1], comp[2]) 
+    company_list.append(c)
+
+# Sets up Twitter auth    
+api = TwitterAPI(setup.consumer_key, setup.consumer_secret, setup.access_token_key, setup.access_token_secret)  
+
+# Goes through list of companies and makes twitter api request to return followers count
+for comp in company_list:
+    r = api.request('users/show', {'screen_name': comp.twitter_handle})
+    for item in r:
+        comp.followers_count = item['followers_count']
+
+# Creates two lists to feed the Twitter table
+twitter_handles = []
+twitter_followers = []
 
 for comp in company_list:
-    print comp[1]
+    twitter_handles.append(comp.twitter_handles)
+    twitter_followers.append(comp.twitter_followers)
+    
+db.add_twitter_row(twitter_handle, twitter_followers)
 
+db.close_conn()
