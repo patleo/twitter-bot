@@ -11,7 +11,7 @@ for item in r:
 from dbwrapper import DBWrapper
 db = DBWrapper()
 
-db.query()
+db.print_table('Companies')
 
 
 

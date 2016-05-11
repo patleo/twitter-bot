@@ -30,4 +30,10 @@ class DBWrapper:
         cur.execute('SELECT * FROM Companies')
         for row in cur:
             print row
-        
+    
+    def print_table(self, table_name):
+        cur = self.conn.cursor()
+        comm = 'SELECT * FROM {}'.format(table_name)
+        cur.execute(comm)
+        for row in cur:
+            print row
