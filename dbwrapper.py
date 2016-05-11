@@ -40,5 +40,5 @@ class DBWrapper:
         comm = 'SELECT * FROM {}'.format(table_name)
         cur.execute(comm)
         for row in cur:
-            retval.append(row)
+            table.append(row)
         return table
