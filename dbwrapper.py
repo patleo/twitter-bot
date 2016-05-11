@@ -16,7 +16,7 @@ class DBWrapper:
         )
         
     def seed_companies_table(self, twitter_handle, stock_ticker, forbes_rank):
-        cur = conn.cursor()
+        cur = self.conn.cursor()
         cur.execute('CREATE TABLE Companies (Twitter varchar(255), Ticker varchar(255), Rank int);')
         for i in range(len(twitter_handle)):
             comm = "INSERT INTO Companies VALUES({},{},{})".format(twitter_handle[i], stock_ticker[i], forbes_rank[i])
