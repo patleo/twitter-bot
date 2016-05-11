@@ -14,5 +14,5 @@ db = DBWrapper()
 company_list = db.return_table('Companies')
 
 for comp in company_list:
-    print comp
+    print comp[1]
 
