@@ -64,5 +64,10 @@ class DBWrapper:
             table.append(row)
         return table
     
+    def print_table(self, table_name):
+        table = return_table(table_name)
+        for row in table:
+            print row
+            
     def close_conn(self):
         self.conn.close()
