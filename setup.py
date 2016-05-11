@@ -11,7 +11,7 @@ if local == False:
     access_token_key = os.environ['access_token_key']
     access_token_secret = os.environ['access_token_secret']
     
-else:
+elif local == True:
     import localsetup
     consumer_key = localsetup.consumer_key 
     consumer_secret = localsetup.consumer_secret
