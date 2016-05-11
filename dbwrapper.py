@@ -27,7 +27,7 @@ class DBWrapper:
     
     def seed_twitter_table(self, twitter_handle):
         cur = self.conn.cursor()
-        cur.execute('CREATE TABLE Twitter (DateCreated DATETIME);')
+        cur.execute('CREATE TABLE Twitter (DateCreated timestamp);')
         for i in range(len(twitter_handle)):
             comm = "ALTER TABLE Twitter ADD COLUMN '{}' BIGINT;".format(twitter_handle[i])
             cur.execute(comm)
