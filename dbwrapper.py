@@ -17,6 +17,7 @@ class DBWrapper:
         )
     
     def add_twitter_row(self, twitter_handles, twitter_followers):
+        """Splits sql statement into 2 parts to populate appropriate field/value then commits it to db"""
         cur = self.conn.cursor()
         comm = "INSERT INTO Twitter (DateCreated, "
         for i in range(len(twitter_handles)):
@@ -24,12 +25,14 @@ class DBWrapper:
                 comm += "{},".format(twitter_handles[i])
             else:
                 comm += "{})".format(twitter_handles[i])
-        comm += "VALUES( {},".format(datetime.datetime.now())
+                
+        comm += "VALUES( {},".format(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
         for i in range(len(twitter_followers)):
             if i < (len(twitter_handles) - 1):
                 comm += "{},".format(twitter_followers[i])
             else:
                 comm += "{});".format(twitter_followers[i])
+                
         cur.execute(comm)
         self.conn.commit()
     
