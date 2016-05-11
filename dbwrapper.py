@@ -29,7 +29,7 @@ class DBWrapper:
         cur = self.conn.cursor()
         cur.execute('CREATE TABLE Twitter (DateCreated timestamp);')
         for i in range(len(twitter_handle)):
-            comm = "ALTER TABLE Twitter ADD COLUMN '{}' BIGINT;".format(twitter_handle[i])
+            comm = "ALTER TABLE Twitter ADD COLUMN {} BIGINT;".format(twitter_handle[i])
             cur.execute(comm)
         self.conn.commit()
         self.conn.close()
