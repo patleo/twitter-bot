@@ -22,4 +22,6 @@ class DBWrapper:
             comm = "INSERT INTO Companies VALUES({},{},{})".format(twitter_handle[i], stock_ticker[i], forbes_rank[i])
             cur.execute(comm)
             
+        self.conn.commit()
+        self.conn.close()        
             
