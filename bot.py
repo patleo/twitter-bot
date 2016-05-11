@@ -7,3 +7,5 @@ r = api.request('users/show', {'screen_name':'walmart'})
 
 for item in r:
     print item['followers_count']
+    
+import dbseed.py
