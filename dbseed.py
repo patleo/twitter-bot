@@ -9,4 +9,4 @@ forbes_rank = [1, 2, 3, 6, 7, 8, 9, 10, 11, 12, 14, 15, 16, 17, 18, 19, 20, 21, 
 
 db = DBWrapper()
 # db.seed_companies_table(twitter_handle, stock_ticker, forbes_rank)
-db.db.seed_twitter_table(twitter_handle)
+db.seed_twitter_table(twitter_handle)
