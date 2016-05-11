@@ -1,3 +1,4 @@
+import sys
 from TwitterAPI import TwitterAPI
 import setup
 from dbwrapper import DBWrapper
