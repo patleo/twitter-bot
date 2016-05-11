@@ -30,6 +30,6 @@ for comp in company_list:
     twitter_handles.append(comp.twitter_handle)
     twitter_followers.append(comp.followers_count)
     
-db.add_twitter_row(twitter_handle, twitter_followers)
+db.add_twitter_row(twitter_handles, twitter_followers)
 
 db.close_conn()
