@@ -11,7 +11,7 @@ for item in r:
 
 from dbwrapper import DBWrapper
 db = DBWrapper()
-company_list = db.return_table('Twitter')
+company_list = db.return_table('Companies')
 
 for comp in company_list:
     print comp
