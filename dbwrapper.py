@@ -25,8 +25,10 @@ class DBWrapper:
                 comm += "{},".format(twitter_handles[i])
             else:
                 comm += "{})".format(twitter_handles[i])
-                
-        comm += "VALUES( {},".format(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
+        
+        
+        
+        comm += "VALUES( '{}',".format(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
         for i in range(len(twitter_followers)):
             if i < (len(twitter_handles) - 1):
                 comm += "{},".format(twitter_followers[i])
