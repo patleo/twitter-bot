@@ -24,4 +24,9 @@ class DBWrapper:
             
         self.conn.commit()
         self.conn.close()        
-            
+    
+    def query(self):
+        cur = self.conn.cursor()
+        return cur.execute('SELECT * FROM Companies')
+    
+        

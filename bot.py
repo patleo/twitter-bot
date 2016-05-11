@@ -7,5 +7,11 @@ r = api.request('users/show', {'screen_name':'walmart'})
 
 for item in r:
     print item['followers_count']
-    
-import dbseed
+
+from dbwrapper import DBWrapper
+db = DBWrapper()
+
+print db.query()
+
+
+
