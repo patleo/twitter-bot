@@ -6,6 +6,7 @@ from twitterclasses import Company
 
 db = DBWrapper()
 company_table = db.return_table('Companies')
+company_list = []
 
 # Returns company info from Company table and adds necessary info to list of companies
 for comp in company_table:
