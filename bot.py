@@ -11,6 +11,6 @@ for item in r:
 from dbwrapper import DBWrapper
 db = DBWrapper()
 db.print_table('Twitter')
-
+db.print_table('Companies')
 
 
