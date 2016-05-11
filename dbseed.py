@@ -8,4 +8,5 @@ stock_ticker = ['WMT', 'XOM', 'CVX', 'GM', 'PSX', 'GE', 'F', 'CVS', 'MCK', 'T', 
 forbes_rank = [1, 2, 3, 6, 7, 8, 9, 10, 11, 12, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33] 
 
 db = DBWrapper()
-db.seed_companies_table(twitter_handle, stock_ticker, forbes_rank)
+# db.seed_companies_table(twitter_handle, stock_ticker, forbes_rank)
+db.db.seed_twitter_table(twitter_handle)
