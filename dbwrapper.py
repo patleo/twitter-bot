@@ -21,15 +21,15 @@ class DBWrapper:
         comm = "INSERT INTO Twitter (DateCreated, "
         for i in range(len(twitter_handles)):
             if i < (len(twitter_handles) - 1):
-                comm += "{},".format(twitter_handles)
+                comm += "{},".format(twitter_handles[i])
             else:
-                comm += "{})".format(twitter_handles)
+                comm += "{})".format(twitter_handles[i])
         comm += "VALUES( {},".format(datetime.datetime.now())
         for i in range(len(twitter_followers)):
             if i < (len(twitter_handles) - 1):
-                comm += "{},".format(twitter_followers)
+                comm += "{},".format(twitter_followers[i])
             else:
-                comm += "{});".format(twitter_followers)
+                comm += "{});".format(twitter_followers[i])
         cur.execute(comm)
         self.conn.commit()
     
