@@ -1,0 +1,1 @@
+seedcomp: python dbseed.py
