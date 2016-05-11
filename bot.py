@@ -10,8 +10,8 @@ for item in r:
 
 from dbwrapper import DBWrapper
 db = DBWrapper()
-
-db.print_table('Companies')
+db.seed_twitter_table()
+db.print_table('Twitter')
 
 
 

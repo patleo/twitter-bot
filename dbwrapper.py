@@ -23,8 +23,17 @@ class DBWrapper:
             cur.execute(comm)
             
         self.conn.commit()
-        self.conn.close()        
+        self.conn.close()
     
+    def seed_twitter_table(self, twitter_handle)
+        cur = self.conn.cursor()
+        cur.execute('CREATE TABLE Twitter')
+        for i in range(len(twitter_handle)):
+            comm = "ALTER TABLE Twitter ADD COLUMN '{}' BIGINT;".format(twitter_handle[i])
+            cur.execute(comm)
+        self.conn.commit()
+        self.conn.close()
+        
     def query(self):
         cur = self.conn.cursor()
         cur.execute('SELECT * FROM Companies')
