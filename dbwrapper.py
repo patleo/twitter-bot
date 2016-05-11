@@ -25,7 +25,7 @@ class DBWrapper:
         self.conn.commit()
         self.conn.close()
     
-    def seed_twitter_table(self, twitter_handle)
+    def seed_twitter_table(self, twitter_handle):
         cur = self.conn.cursor()
         cur.execute('CREATE TABLE Twitter')
         for i in range(len(twitter_handle)):
