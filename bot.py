@@ -28,8 +28,12 @@ api = TwitterAPI(setup.consumer_key, setup.consumer_secret, setup.access_token_k
 # Goes through list of companies and makes twitter api request to return followers count
 for comp in company_list:
     r = api.request('users/show', {'screen_name': comp.twitter_handle})
-    for item in r:
+    for item in r.get_iterator():
         comp.followers_count = item['followers_count']
+        if 'text' in item:
+            print item['text']
+        elif 'message' in item:
+            print '%s (%d)' % (item['message'], item['code'])
 
 # Creates two lists to feed the Twitter table
 twitter_handles = []
