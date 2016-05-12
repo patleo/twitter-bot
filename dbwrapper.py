@@ -29,7 +29,7 @@ class DBWrapper:
         
         time = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
         print time
-        comm += "VALUES( {},".format(time)
+        comm += "VALUES( '{}',".format(time)
         for i in range(len(twitter_followers)):
             if i < (len(twitter_handles) - 1):
                 comm += "{},".format(twitter_followers[i])
