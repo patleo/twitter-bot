@@ -31,7 +31,6 @@ class Markov:
             try:
                 w1, w2 =  w2, random.choice(self.word_dict[(w1, w2)])
             except KeyError:
-                print "EXCEPTION"
                 n = random.randint(0, self.words_len - (word_limit + 3 - x))
                 w1, w2 = self.words[n], self.words[n + 1]
         return tweet.capitalize()
@@ -44,13 +43,11 @@ class TweetProc:
         
     def original(self,tweet):
         if self.text.lower().find(tweet.lower()) > -1:
-            print "NOT ORIGINAL"
             self.dupe_count += 1
             return False
         return True
     def too_long(self, tweet):
         if len(tweet) > int(140):
-            print "TOO LONG"
             self.long_count += 1
     def remove_mentions(self, tweet):
         words = tweet.split()
@@ -59,7 +56,6 @@ class TweetProc:
             if word.find('@') == 0:
                 words.remove(word)
         for word in words:
-            print word
             retVal += '%s ' % (word)
         return retVal
         
