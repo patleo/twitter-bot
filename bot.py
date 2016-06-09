@@ -38,4 +38,4 @@ print 'Number of generated tweets that were duplicates: {}'.format(proc.dupe_cou
 
 r = api.request('statuses/update', {'status': tweet})
 
-print 'Tweet status'.format(r.status_code)
+print 'Tweet status {}'.format(r.status_code)
