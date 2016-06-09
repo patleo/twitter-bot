@@ -47,8 +47,10 @@ class TweetProc:
             return False
         return True
     def too_long(self, tweet):
-        if len(tweet) > int(140):
+        if len(unicodedata.normalize('NFC', tweet)) > int(140):
             self.long_count += 1
+            return False
+        return True
     def remove_mentions(self, tweet):
         words = tweet.split()
         retVal = ''

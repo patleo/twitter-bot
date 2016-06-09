@@ -28,7 +28,7 @@ tweet = ''
 
 for x in range(1):
     tweet = mark.generate_tweet_text()
-    while not proc.original(tweet) and proc.too_long(tweet):
+    while not proc.original(tweet) or not proc.too_long(tweet):
         tweet = mark.generate_tweet_text()
         tweet = proc.remove_mentions(tweet)
     
@@ -39,4 +39,8 @@ print (tweet)
 
 r = api.request('statuses/update', {'status': tweet})
 
-print 'Tweet status {}'.format(r.status_code)
+if not response.status_code // 100 == 2:
+    print 'Tweet status {}'.format(r.status_code)
+    for item in r.get_iterator():
+        print item
+    
