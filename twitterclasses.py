@@ -1,4 +1,5 @@
 import random
+import unicodedata
 
 class Markov: 
     def __init__(self, text):
