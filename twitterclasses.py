@@ -55,6 +55,8 @@ class TweetProc:
         for word in words[:]:
             if word.find('@') == 0:
                 words.remove(word)
+            elif word.find('http') > -1:
+                words.remove(word)
         for word in words:
             retVal += '%s ' % (word)
         return retVal
