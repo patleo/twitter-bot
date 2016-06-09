@@ -28,7 +28,7 @@ tweet = ''
 
 for x in range(1):
     tweet = mark.generate_tweet_text()
-    while not proc.original(tweet) or not proc.too_long(tweet):
+    while not proc.original(tweet) or proc.too_long(tweet):
         tweet = mark.generate_tweet_text()
         tweet = proc.remove_mentions(tweet)
     
