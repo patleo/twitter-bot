@@ -35,6 +35,7 @@ for x in range(1):
 
 print 'Number of generated tweets that were too long: {}'.format(proc.long_count)
 print 'Number of generated tweets that were duplicates: {}'.format(proc.dupe_count)
+print (tweet)
 
 r = api.request('statuses/update', {'status': tweet})
 
