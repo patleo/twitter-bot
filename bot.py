@@ -26,11 +26,10 @@ mark = Markov(tweet_text)
 proc = TweetProc(tweet_text)
 tweet = ''
 
-for x in range(1):
+tweet = mark.generate_tweet_text()
+while not proc.original(tweet) or proc.too_long(tweet):
     tweet = mark.generate_tweet_text()
-    while not proc.original(tweet) or proc.too_long(tweet):
-        tweet = mark.generate_tweet_text()
-        tweet = proc.remove_mentions(tweet)
+    tweet = proc.remove_mentions(tweet)
     
 
 print 'Number of generated tweets that were too long: {}'.format(proc.long_count)
