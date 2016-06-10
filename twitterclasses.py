@@ -9,12 +9,11 @@ class Markov:
         self.generate_dict()
         
     def thirds(self):
-        for index in range(len(self.words) - 2):
+        for index in range(self.words_len - 2):
             yield (self.words[index], self.words[index+1], self.words[index+2])
             
     def generate_dict(self):
-        
-        for w1, w2, w3 in self.thirds():
+         for w1, w2, w3 in self.thirds():
             key = (w1, w2)
             if key in self.word_dict:
                 self.word_dict[key].append(w3)
@@ -22,7 +21,6 @@ class Markov:
                 self.word_dict[key] = [w3]
 
     def generate_tweet_text(self, word_limit=20):
-        
         n = random.randint(0, self.words_len - (word_limit + 3))
         w1, w2 = self.words[n], self.words[n + 1]
         tweet = ''
@@ -47,11 +45,13 @@ class TweetProc:
             self.dupe_count += 1
             return False
         return True
+    
     def too_long(self, tweet):
         if len(unicodedata.normalize('NFC', tweet)) > int(140):
             self.long_count += 1
             return True
         return False
+    
     def remove_mentions(self, tweet):
         words = tweet.split()
         retVal = ''
