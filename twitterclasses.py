@@ -32,7 +32,7 @@ class Markov:
             except KeyError:
                 n = random.randint(0, self.words_len - (word_limit + 3 - x))
                 w1, w2 = self.words[n], self.words[n + 1]
-        return tweet.capitalize().strip()
+        return tweet.strip().capitalize()
 
 class TweetProc:
     def __init__(self, text):
