@@ -26,13 +26,13 @@ class Markov:
         tweet = ''
         
         for x in xrange(word_limit):
-            tweet += '%s ' % (w1)
+            tweet += ' %s ' % (w1)
             try:
                 w1, w2 =  w2, random.choice(self.word_dict[(w1, w2)])
             except KeyError:
                 n = random.randint(0, self.words_len - (word_limit + 3 - x))
                 w1, w2 = self.words[n], self.words[n + 1]
-        return tweet.capitalize()
+        return tweet.capitalize().strip()
 
 class TweetProc:
     def __init__(self, text):
